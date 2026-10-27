@@ -1,7 +1,5 @@
-<title>Borrador web corporativa</title>
+<title>RSG APPS</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
 /* Layout: cabecera fija, portada en dos columnas, rejilla de servicios, banda navy para restauración, proceso en pasos, contacto en dos columnas */
 :root{
@@ -9,8 +7,8 @@
   --navy:#1E3A5F; --on-navy:#DCE6F5; --accent:#2F6FED; --accent-fg:#FFFFFF; --accent-soft:#E4ECFD;
   --teal:#0F9D8A; --teal-soft:#D6F0EC; --teal-fg:#0A6358;
   --amber-soft:#FBF0CC; --amber-fg:#7A5A00;
-  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --display:"Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --body:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0F1620; --surface:#172131; --fg:#E6ECF5; --muted:#9AA8BC; --line:#26344A;
@@ -195,7 +193,7 @@ footer a{color:var(--muted)}
         <select id="t" name="tipo_negocio"><option>Restauración</option><option>Comercio</option><option>Otro</option></select>
       </label>
       <label for="m">¿Qué quieres mejorar?<textarea id="m" name="message" required></textarea></label>
-      <label class="chk" for="p"><input id="p" type="checkbox" name="acepta_privacidad" value="si" required><span>He leído y acepto la política de privacidad (pendiente de publicar).</span></label>
+      <label class="chk" for="p"><input id="p" type="checkbox" name="acepta_privacidad" value="si" required><span>He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</span></label>
       <button class="btn" id="send" type="submit">Enviar consulta</button>
       <p id="msg" role="status" hidden></p>
     </form>
@@ -204,8 +202,8 @@ footer a{color:var(--muted)}
 
 <footer>
   <div class="wrap">
-    <span>© RSG APPS</span>
-    <span>Aviso legal · Privacidad · Cookies (pendientes de redactar)</span>
+    <span>© RSG APPS · Raimundo Sanz García</span>
+    <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></span>
   </div>
 </footer>
 
