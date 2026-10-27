@@ -1,0 +1,228 @@
+<title>Borrador web corporativa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: cabecera fija, portada en dos columnas, rejilla de servicios, banda navy para restauración, proceso en pasos, contacto en dos columnas */
+:root{
+  --bg:#F6F8FB; --surface:#FFFFFF; --fg:#1B2430; --muted:#5B6B80; --line:#E2E8F0;
+  --navy:#1E3A5F; --on-navy:#DCE6F5; --accent:#2F6FED; --accent-fg:#FFFFFF; --accent-soft:#E4ECFD;
+  --teal:#0F9D8A; --teal-soft:#D6F0EC; --teal-fg:#0A6358;
+  --amber-soft:#FBF0CC; --amber-fg:#7A5A00;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1620; --surface:#172131; --fg:#E6ECF5; --muted:#9AA8BC; --line:#26344A;
+  --navy:#14283F; --on-navy:#C9D7EC; --accent:#5B8DEF; --accent-fg:#0B1220; --accent-soft:#1B2C4D;
+  --teal:#2FC4AE; --teal-soft:#14332F; --teal-fg:#7FE0CF;
+  --amber-soft:#3A3010; --amber-fg:#F0CF73; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1620; --surface:#172131; --fg:#E6ECF5; --muted:#9AA8BC; --line:#26344A;
+  --navy:#14283F; --on-navy:#C9D7EC; --accent:#5B8DEF; --accent-fg:#0B1220; --accent-soft:#1B2C4D;
+  --teal:#2FC4AE; --teal-soft:#14332F; --teal-fg:#7FE0CF;
+  --amber-soft:#3A3010; --amber-fg:#F0CF73; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto}
+.draft{background:var(--amber-soft);color:var(--amber-fg);font-size:14px;text-align:center;padding:6px 12px;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-left,0px))}
+.bar{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px 24px;flex-wrap:wrap;padding:12px 0}
+.logo{font-family:var(--display);font-weight:700;font-size:20px;color:var(--navy);text-decoration:none;margin-right:auto}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo{color:var(--fg)}}
+:root[data-theme="dark"] .logo{color:var(--fg)}
+nav{display:flex;gap:4px 20px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--fg)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font:600 16px var(--body);padding:11px 20px;border-radius:6px;border:0;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+section{padding-block:72px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:12px}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center}
+.hero h1{font-size:clamp(34px,5.2vw,56px);margin-bottom:20px}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:52ch;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;min-width:0}
+.panel h3{font-size:15px;color:var(--muted);font-weight:500;margin-bottom:12px}
+.item{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:16px}
+.item:first-of-type{border-top:0}
+.item span.t{flex:1;min-width:0}
+.chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.c-ok{background:var(--teal-soft);color:var(--teal-fg)}
+.c-wip{background:var(--amber-soft);color:var(--amber-fg)}
+.c-new{background:var(--accent-soft);color:var(--accent)}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.head{max-width:60ch;margin-bottom:36px}
+.head h2{font-size:clamp(28px,3.6vw,38px);margin-bottom:12px}
+.head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;min-width:0}
+.card h3{font-size:20px;margin:12px 0 8px}
+.card p{color:var(--muted);font-size:16px}
+.card .ic{font-family:var(--display);font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.04em}
+.band{background:var(--navy);color:var(--on-navy);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.band h2{color:#fff}
+.band .head p{color:var(--on-navy)}
+.band .eyebrow{color:#7FE0CF}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 40px}
+.two li{padding:12px 0;border-top:1px solid rgba(220,230,245,.22);list-style:none}
+ul{margin:0;padding:0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;counter-reset:s}
+.step{border-top:3px solid var(--accent);padding-top:14px;counter-increment:s;min-width:0}
+.step::before{content:counter(s);font-family:var(--display);font-weight:700;color:var(--accent);font-size:15px}
+.step h3{font-size:19px;margin:6px 0}
+.step p{color:var(--muted);font-size:16px}
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
+form{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px}
+label{font-size:15px;font-weight:600;display:grid;gap:6px}
+input,textarea,select{font:16px var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;width:100%}
+textarea{min-height:120px;resize:vertical}
+#msg{font-size:15px;color:var(--teal-fg);background:var(--teal-soft);padding:10px 12px;border-radius:6px}
+#msg.err{color:var(--amber-fg);background:var(--amber-soft)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+label.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--muted)}
+label.chk input{width:auto;margin-top:4px}
+footer{border-top:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:28px max(16px,env(safe-area-inset-left,0px));color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{color:var(--muted)}
+@media (max-width:760px){.hero,.contact{grid-template-columns:1fr;gap:32px}section{padding-block:48px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<div class="draft">Borrador: los textos son provisionales.</div>
+<header class="top">
+  <div class="bar">
+    <a class="logo" href="#inicio">RSG APPS</a>
+    <nav aria-label="Principal">
+      <a href="#soluciones">Soluciones</a>
+      <a href="#restauracion">Restauración</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn" href="#contacto">Cuéntanos tu proyecto</a>
+  </div>
+</header>
+
+<main class="wrap" id="inicio">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Software y automatización para empresas</p>
+      <h1>Aplicaciones prácticas, hechas a la medida de tu negocio</h1>
+      <p class="lead">Desarrollamos software que encaja con tu forma de trabajar: albaranes, fichajes, pedidos o lo que hoy haces a mano. Instalado en tus equipos o en la nube, según lo que necesites.</p>
+      <div class="cta">
+        <a class="btn" href="#contacto">¿Qué quieres mejorar en tu negocio?</a>
+        <a class="btn ghost" href="#soluciones">Ver soluciones</a>
+      </div>
+    </div>
+    <aside class="panel" aria-label="Ejemplos de tareas que se pueden automatizar">
+      <h3>Tareas que solemos simplificar</h3>
+      <div class="item"><span class="t">Albaranes y facturas</span><span class="chip c-ok">Ejemplo</span></div>
+      <div class="item"><span class="t">Registro de jornada del personal</span><span class="chip c-ok">Ejemplo</span></div>
+      <div class="item"><span class="t">Pedidos a proveedores</span><span class="chip c-ok">Ejemplo</span></div>
+      <div class="item"><span class="t">Fichas de recetas y costes</span><span class="chip c-wip">En desarrollo</span></div>
+      <p class="note">Lista orientativa. Se sustituirá por proyectos reales cuando existan.</p>
+    </aside>
+  </section>
+
+  <section id="soluciones">
+    <div class="head">
+      <p class="eyebrow">Soluciones</p>
+      <h2>Qué podemos hacer por ti</h2>
+      <p>Empezamos por entender qué te hace perder tiempo y proponemos la solución más sencilla que funcione.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><span class="ic">01</span><h3>Desarrollo personalizado</h3><p>Aplicaciones adaptadas a tus procesos y a tu presupuesto, sin funciones que no vas a usar.</p></article>
+      <article class="card"><span class="ic">02</span><h3>Software de escritorio</h3><p>Programas instalados en tus ordenadores, con datos en tu red local cuando prefieras no depender de internet.</p></article>
+      <article class="card"><span class="ic">03</span><h3>Automatización de procesos</h3><p>Detectamos tareas repetitivas y las simplificamos, con asesoramiento para saber por dónde empezar.</p></article>
+      <article class="card"><span class="ic">04</span><h3>Aplicaciones propias</h3><p>Productos listos para usar. <span class="chip c-new">Próximamente</span></p></article>
+    </div>
+  </section>
+</main>
+
+<div class="band" id="restauracion">
+  <div class="wrap">
+    <section>
+      <div class="head">
+        <p class="eyebrow">Restauración</p>
+        <h2>Pensado por quien conoce una cocina</h2>
+        <p>Herramientas para restaurantes, bares, panaderías y obradores, diseñadas con las necesidades reales del servicio.</p>
+      </div>
+      <ul class="two">
+        <li>Albaranes, facturas y control de proveedores</li>
+        <li>Registro de jornada del equipo</li>
+        <li>Fichas de producción y escandallos</li>
+        <li>Gestión de pedidos y repartos</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="proceso">
+    <div class="head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Del problema a la herramienta funcionando</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Análisis</h3><p>Una primera conversación para conocer tu negocio.</p></div>
+      <div class="step"><h3>Propuesta</h3><p>Qué haremos, en cuánto tiempo y a qué precio.</p></div>
+      <div class="step"><h3>Desarrollo</h3><p>Versiones que puedes probar a medida que avanzan.</p></div>
+      <div class="step"><h3>Instalación y formación</h3><p>Puesta en marcha y explicación a tu equipo.</p></div>
+      <div class="step"><h3>Mantenimiento</h3><p>Soporte y mejoras cuando las necesites.</p></div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div>
+      <p class="eyebrow">Contacto</p>
+      <h2 style="font-size:clamp(28px,3.6vw,38px);margin-bottom:12px">Cuéntanos qué necesitas</h2>
+      <p style="color:var(--muted);max-width:44ch">Explícanos tu caso en pocas líneas. Si prefieres, empezamos con una primera conversación sin compromiso.</p>
+      <p class="note">Correo: <span style="user-select:all">rsgaplicacion@gmail.com</span></p>
+    </div>
+    <form id="f" action="https://formspree.io/f/moeeeypa" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Nueva consulta desde la web de RSG APPS">
+      <div class="hp" aria-hidden="true"><label>No rellenar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+      <label for="n">Nombre<input id="n" name="name" autocomplete="name" required></label>
+      <label for="e">Correo electrónico<input id="e" name="email" type="email" autocomplete="email" required></label>
+      <label for="t">Tipo de negocio
+        <select id="t" name="tipo_negocio"><option>Restauración</option><option>Comercio</option><option>Otro</option></select>
+      </label>
+      <label for="m">¿Qué quieres mejorar?<textarea id="m" name="message" required></textarea></label>
+      <label class="chk" for="p"><input id="p" type="checkbox" name="acepta_privacidad" value="si" required><span>He leído y acepto la política de privacidad (pendiente de publicar).</span></label>
+      <button class="btn" id="send" type="submit">Enviar consulta</button>
+      <p id="msg" role="status" hidden></p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© RSG APPS</span>
+    <span>Aviso legal · Privacidad · Cookies (pendientes de redactar)</span>
+  </div>
+</footer>
+
+<script>
+var form=document.getElementById("f"),msg=document.getElementById("msg"),btn=document.getElementById("send");
+function show(text,isErr){msg.hidden=false;msg.className=isErr?"err":"";msg.textContent=text}
+form.addEventListener("submit",function(ev){
+  ev.preventDefault();
+  if(!form.name.value.trim()||!form.email.validity.valid||!form.message.value.trim()){show("Completa tu nombre, un correo válido y la descripción.",true);return}
+  if(!form.acepta_privacidad.checked){show("Acepta la política de privacidad para enviar la consulta.",true);return}
+  btn.disabled=true;btn.textContent="Enviando…";
+  fetch(form.action,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}})
+    .then(function(r){
+      if(r.ok){form.reset();show("Consulta enviada. Te responderemos lo antes posible.",false)}
+      else{show("No se pudo enviar la consulta. Inténtalo de nuevo o escribe a rsgaplicacion@gmail.com.",true)}
+    })
+    .catch(function(){show("No se pudo enviar la consulta. Revisa tu conexión o escribe a rsgaplicacion@gmail.com.",true)})
+    .then(function(){btn.disabled=false;btn.textContent="Enviar consulta"});
+});
+</script>
