@@ -69,6 +69,15 @@ section{padding-block:72px}
 .band h2{color:#fff}
 .band .head p{color:var(--on-navy)}
 .band .eyebrow{color:#7FE0CF}
+.oficio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start;border-top:1px solid var(--line)}
+.oficio h2{font-size:clamp(28px,3.6vw,38px);margin:0 0 16px}
+.oficio p{color:var(--muted)}
+.stats{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.stats li{display:grid;grid-template-columns:clamp(100px,14vw,136px) minmax(0,1fr);gap:4px 20px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.stats li:first-child{border-top:0;padding-top:0}
+.stats b{font-family:var(--display);font-size:clamp(30px,4vw,40px);line-height:1;color:var(--accent);font-weight:700}
+.stats span{font-size:16px}
+@media (max-width:760px){.oficio{grid-template-columns:1fr;gap:24px}}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 40px}
 .two li{padding:12px 0;border-top:1px solid rgba(220,230,245,.22);list-style:none}
 ul{margin:0;padding:0}
@@ -141,6 +150,19 @@ footer a{color:var(--muted)}
       <article class="card"><span class="ic">03</span><h3>Automatización de tareas</h3><p>Detectamos lo que haces a mano una y otra vez y lo simplificamos. Si no sabes por dónde empezar, te orientamos.</p></article>
       <article class="card"><span class="ic">04</span><h3>Aplicaciones propias</h3><p>Herramientas listas para usar, en preparación. <span class="chip c-new">Próximamente</span></p></article>
     </div>
+  </section>
+
+  <section id="oficio" class="oficio">
+    <div>
+      <p class="eyebrow">Quién está detrás</p>
+      <h2>Hecho por alguien que conoce el oficio</h2>
+      <p>RSG APPS nace de la cocina. He vivido los albaranes que no cuadran, los turnos que se cambian a última hora y las horas perdidas en papeles. Por eso no te propongo software que quede bonito en una demo, sino herramientas que funcionen un martes de servicio.</p>
+    </div>
+    <ul class="stats">
+      <li><b>30+</b><span>años en hostelería</span></li>
+      <li><b>15+</b><span>años en puestos de responsabilidad, con equipos y gestión del día a día</span></li>
+      <li><b>Propio</b><span>experiencia como autónomo, llevando mi propio negocio</span></li>
+    </ul>
   </section>
 </main>
 
