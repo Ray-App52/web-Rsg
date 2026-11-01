@@ -1,112 +1,15 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>RSG APPS</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Software y automatización para empresas: aplicaciones prácticas, hechas a la medida de tu negocio. Con especialidad en hostelería.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<style>
-/* Layout: cabecera fija, portada en dos columnas, rejilla de servicios, banda navy para restauración, proceso en pasos, contacto en dos columnas */
-:root{
-  --bg:#F6F8FB; --surface:#FFFFFF; --fg:#1B2430; --muted:#5B6B80; --line:#E2E8F0;
-  --navy:#1E3A5F; --on-navy:#DCE6F5; --accent:#2F6FED; --accent-fg:#FFFFFF; --accent-soft:#E4ECFD;
-  --teal:#0F9D8A; --teal-soft:#D6F0EC; --teal-fg:#0A6358;
-  --amber-soft:#FBF0CC; --amber-fg:#7A5A00;
-  --display:"Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-  --body:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0F1620; --surface:#172131; --fg:#E6ECF5; --muted:#9AA8BC; --line:#26344A;
-  --navy:#14283F; --on-navy:#C9D7EC; --accent:#5B8DEF; --accent-fg:#0B1220; --accent-soft:#1B2C4D;
-  --teal:#2FC4AE; --teal-soft:#14332F; --teal-fg:#7FE0CF;
-  --amber-soft:#3A3010; --amber-fg:#F0CF73; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0F1620; --surface:#172131; --fg:#E6ECF5; --muted:#9AA8BC; --line:#26344A;
-  --navy:#14283F; --on-navy:#C9D7EC; --accent:#5B8DEF; --accent-fg:#0B1220; --accent-soft:#1B2C4D;
-  --teal:#2FC4AE; --teal-soft:#14332F; --teal-fg:#7FE0CF;
-  --amber-soft:#3A3010; --amber-fg:#F0CF73; color-scheme:dark}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
-p{margin:0}
-a{color:var(--accent)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.wrap{max-width:1080px;margin:0 auto}
-.draft{background:var(--amber-soft);color:var(--amber-fg);font-size:14px;text-align:center;padding:6px 12px;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)))}
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-left,0px))}
-.bar{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px 24px;flex-wrap:wrap;padding:12px 0}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.01em;color:var(--navy);text-decoration:none;margin-right:auto}
-.logo img{display:block;height:44px;width:auto}
-.logo i{font-style:normal;color:var(--teal)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo{color:var(--fg)}}
-:root[data-theme="dark"] .logo{color:var(--fg)}
-nav{display:flex;gap:4px 20px;flex-wrap:wrap}
-nav a{color:var(--muted);text-decoration:none;font-size:15px;padding:4px 0;border-bottom:2px solid transparent}
-nav a:hover{color:var(--fg)}
-nav a.on{color:var(--fg);border-bottom-color:var(--accent)}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font:600 16px var(--body);padding:11px 20px;border-radius:6px;border:0;text-decoration:none;cursor:pointer}
-.btn:hover{filter:brightness(1.08)}
-.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-section{padding-block:72px}
-.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:12px}
-.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center}
-.hero h1{font-size:clamp(34px,5.2vw,56px);margin-bottom:20px}
-.hero p.lead{font-size:19px;color:var(--muted);max-width:52ch;margin-bottom:28px}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;min-width:0}
-.panel h3{font-size:15px;color:var(--muted);font-weight:500;margin-bottom:12px}
-.item{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:16px}
-.item:first-of-type{border-top:0}
-.item span.t{flex:1;min-width:0}
-.chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
-.c-ok{background:var(--teal-soft);color:var(--teal-fg)}
-.c-wip{background:var(--amber-soft);color:var(--amber-fg)}
-.c-new{background:var(--accent-soft);color:var(--accent)}
-.note{font-size:13px;color:var(--muted);margin-top:12px}
-.head{max-width:60ch;margin-bottom:36px}
-.head h2{font-size:clamp(28px,3.6vw,38px);margin-bottom:12px}
-.head p{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;min-width:0}
-.card h3{font-size:20px;margin:12px 0 8px}
-.card p{color:var(--muted);font-size:16px}
-.card .ic{font-family:var(--display);font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.04em}
-.band{background:var(--navy);color:var(--on-navy);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
-.band h2{color:#fff}
-.band .head p{color:var(--on-navy)}
-.band .eyebrow{color:#7FE0CF}
-.oficio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start;border-top:1px solid var(--line)}
-.oficio h2{font-size:clamp(28px,3.6vw,38px);margin:0 0 16px}
-.oficio p{color:var(--muted)}
-.stats{display:grid;gap:0;margin:0;padding:0;list-style:none}
-.stats li{display:grid;grid-template-columns:clamp(100px,14vw,136px) minmax(0,1fr);gap:4px 20px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
-.stats li:first-child{border-top:0;padding-top:0}
-.stats b{font-family:var(--display);font-size:clamp(30px,4vw,40px);line-height:1;color:var(--accent);font-weight:700}
-.stats span{font-size:16px}
-@media (max-width:760px){.oficio{grid-template-columns:1fr;gap:24px}}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 40px}
-.two li{padding:12px 0;border-top:1px solid rgba(220,230,245,.22);list-style:none}
-ul{margin:0;padding:0}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;counter-reset:s}
-.step{border-top:3px solid var(--accent);padding-top:14px;counter-increment:s;min-width:0}
-.step::before{content:counter(s);font-family:var(--display);font-weight:700;color:var(--accent);font-size:15px}
-.step h3{font-size:19px;margin:6px 0}
-.step p{color:var(--muted);font-size:16px}
-.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
-form{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px}
-label{font-size:15px;font-weight:600;display:grid;gap:6px}
-input,textarea,select{font:16px var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;width:100%}
-textarea{min-height:120px;resize:vertical}
-#msg{font-size:15px;color:var(--teal-fg);background:var(--teal-soft);padding:10px 12px;border-radius:6px}
-#msg.err{color:var(--amber-fg);background:var(--amber-soft)}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-label.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--muted)}
-label.chk input{width:auto;margin-top:4px}
-footer{border-top:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:28px max(16px,env(safe-area-inset-left,0px));color:var(--muted);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
-footer a{color:var(--muted)}
-@media (max-width:760px){.hero,.contact{grid-template-columns:1fr;gap:32px}section{padding-block:48px}header.top{position:static}.bar{gap:6px 12px;padding:10px 0}.bar .btn{display:none}nav{width:100%;gap:2px 18px}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
 
 <div class="draft">Borrador: los textos son provisionales.</div>
 <header class="top">
@@ -114,7 +17,7 @@ footer a{color:var(--muted)}
     <a class="logo" href="#inicio" aria-label="RSG APPS, inicio"><img src="icon.png" alt="" width="34" height="44"><span>RSG <i>APPS</i></span></a>
     <nav aria-label="Principal">
       <a href="#soluciones">Soluciones</a>
-      <a href="#restauracion">Restauración</a>
+      <a href="hosteleria.html">Hostelería</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -157,25 +60,13 @@ footer a{color:var(--muted)}
     </div>
   </section>
 
-  <section id="oficio" class="oficio">
-    <div>
-      <p class="eyebrow">Quién está detrás</p>
-      <h2>Hecho por alguien que conoce el oficio</h2>
-      <p>RSG APPS nace de la cocina. He vivido los albaranes que no cuadran, los turnos que se cambian a última hora y las horas perdidas en papeles. Por eso no te propongo software que quede bonito en una demo, sino herramientas que funcionen un martes de servicio.</p>
-    </div>
-    <ul class="stats">
-      <li><b>30+</b><span>años en hostelería</span></li>
-      <li><b>15+</b><span>años en puestos de responsabilidad, con equipos y gestión del día a día</span></li>
-      <li><b>Propio</b><span>experiencia como autónomo, llevando mi propio negocio</span></li>
-    </ul>
-  </section>
 </main>
 
 <div class="band" id="restauracion">
   <div class="wrap">
     <section>
       <div class="head">
-        <p class="eyebrow">Restauración</p>
+        <p class="eyebrow">RSG Hostelería</p>
         <h2>Con especialidad en hostelería</h2>
         <p>Conocemos una cocina por dentro. Por eso estamos preparando herramientas para restaurantes, bares, panaderías y obradores. Muy pronto, más detalles.</p>
       </div>
@@ -185,6 +76,7 @@ footer a{color:var(--muted)}
         <li>Fichas de producción y escandallos</li>
         <li>Gestión de pedidos y repartos</li>
       </ul>
+      <p style="margin-top:28px"><a class="btn light" href="hosteleria.html">Conoce RSG Hostelería</a></p>
     </section>
   </div>
 </div>
@@ -253,7 +145,7 @@ form.addEventListener("submit",function(ev){
 
 (function(){
   var links=[].slice.call(document.querySelectorAll('nav a[href^="#"]'));
-  var ids=["soluciones","oficio","restauracion","proceso","contacto"];
+  var ids=["soluciones","restauracion","proceso","contacto"];
   var secs=ids.map(function(i){return document.getElementById(i)}).filter(Boolean);
   var ticking=false;
   function update(){
@@ -271,3 +163,5 @@ form.addEventListener("submit",function(ev){
   update();
 })();
 </script>
+</body>
+</html>
