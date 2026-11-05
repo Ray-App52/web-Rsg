@@ -1,0 +1,16 @@
+{
+  "name": "Cuaderno del Profesor",
+  "short_name": "Cuaderno",
+  "description": "Cuaderno del profesor para cualquier módulo: evaluación, clases, exámenes y biblioteca. Tus datos se quedan en tu dispositivo.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#b4531f",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

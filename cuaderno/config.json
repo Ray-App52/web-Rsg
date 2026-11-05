@@ -1,0 +1,16 @@
+{
+  "pruebaDias": 30,
+  "contacto": "tu-correo@ejemplo.com",
+  "clavePublica": "",
+  "supabaseUrl": "https://xlzmtpdcigdwtpwrewbt.supabase.co",
+  "supabaseKey": "sb_publishable_D3lbEUXHUPwZHQZQ_EFG3A_IeLN8hG9",
+  "legal": {
+    "borrador": true,
+    "titular": "Raimundo Sanz García (RSG APPS)",
+    "nif": "",
+    "domicilio": "",
+    "email": "rsgaplicacion@gmail.com",
+    "web": "https://web-rsg.vercel.app/",
+    "actualizado": "2026-11-05"
+  }
+}

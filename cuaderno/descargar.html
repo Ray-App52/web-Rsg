@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Cuaderno del Profesor · Instalar</title>
+<meta name="description" content="Cuaderno del profesor para cualquier módulo: evaluación, clases, exámenes y biblioteca. Funciona sin conexión y tus datos se quedan en tu dispositivo." />
+<meta name="theme-color" content="#b4531f" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<style>
+  :root { --fondo:#faf7f2; --sup:#fff; --texto:#2b2622; --suave:#6d645c; --borde:#e2dbd1; --acento:#b4531f; --acento-fondo:#fbeee5; }
+  @media (prefers-color-scheme: dark) { :root { --fondo:#1d1a17; --sup:#28241f; --texto:#f1ebe3; --suave:#b3a99d; --borde:#413a32; --acento:#f0925c; --acento-fondo:#3a2a20; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--fondo); color:var(--texto); font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  img.logo { width: 96px; height: 96px; border-radius: 22px; }
+  h1 { margin: 12px 0 4px; font-size: 1.8rem; }
+  .lema { color: var(--suave); margin: 0 0 20px; }
+  .acciones { display:flex; flex-wrap:wrap; gap:10px; margin: 20px 0; }
+  a.boton, button { font: inherit; padding: 12px 20px; border-radius: 10px; border: 1px solid var(--borde); background: var(--sup); color: var(--texto); cursor: pointer; text-decoration: none; min-height: 48px; display: inline-flex; align-items: center; }
+  .primario { background: var(--acento); color: #fff; border-color: var(--acento); font-weight: 600; }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  ul.lista { padding-left: 20px; } ul.lista li { margin: 6px 0; }
+  .tarjeta { background: var(--sup); border: 1px solid var(--borde); border-radius: 12px; padding: 14px 16px; margin: 14px 0; }
+  .tarjeta h2 { margin: 0 0 6px; font-size: 1.05rem; }
+  .prueba { background: var(--acento-fondo); border-color: var(--acento); }
+  .meta { color: var(--suave); font-size: .9rem; }
+  #estado { min-height: 1.4em; }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="icons/icon-192.png" alt="Icono de Cuaderno del Profesor" width="96" height="96" />
+  <h1>Cuaderno del Profesor</h1>
+  <p class="lema">Evaluación, calendario, rúbricas, exámenes y biblioteca para cualquier módulo. Sin cuentas: tus datos se quedan en tu dispositivo.</p>
+
+  <p class="tarjeta prueba" id="prueba">Prueba gratuita incluida.</p>
+
+  <div class="acciones">
+    <button class="primario" id="instalar" disabled>Instalar la aplicación</button>
+    <a class="boton" href="./">Abrir en el navegador</a>
+  </div>
+  <p class="meta" id="estado" role="status"></p>
+
+  <ul class="lista">
+    <li>Funciona sin conexión una vez instalada (la IA opcional necesita internet).</li>
+    <li>PC, tablet y móvil. Se actualiza sola.</li>
+    <li>Tus datos no salen del dispositivo; haz copias de seguridad desde Ajustes.</li>
+  </ul>
+
+  <div class="tarjeta" id="ayuda-pc"><h2>PC o Android (Chrome / Edge)</h2>Pulsa «Instalar la aplicación». Si el botón no se activa, abre el menú ⋮ del navegador y elige «Instalar aplicación».</div>
+  <div class="tarjeta" id="ayuda-ios"><h2>iPhone / iPad (Safari)</h2>Pulsa el botón Compartir y elige «Añadir a pantalla de inicio». (En iOS no existe botón de instalación automática.)</div>
+
+  <p class="meta" id="contacto"></p>
+  <p class="meta"><a href="legal.html#aviso">Aviso legal</a> · <a href="legal.html#privacidad">Privacidad</a> · <a href="legal.html#terminos">Condiciones de uso</a></p>
+</main>
+<script>
+  var evento = null, boton = document.getElementById('instalar'), estado = document.getElementById('estado');
+  var instalada = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if (instalada) { estado.textContent = 'La aplicación ya está instalada en este dispositivo.'; boton.textContent = 'Abrir la aplicación'; boton.disabled = false; }
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); evento = e; boton.disabled = false; });
+  window.addEventListener('appinstalled', function () { estado.textContent = 'Instalada. Búscala en tu escritorio o pantalla de inicio.'; boton.disabled = true; });
+  boton.addEventListener('click', function () {
+    if (instalada) { location.href = './'; return; }
+    if (!evento) { estado.textContent = 'Tu navegador no ofrece instalación automática: sigue las instrucciones de abajo.'; return; }
+    evento.prompt();
+    evento.userChoice.then(function (r) { estado.textContent = r.outcome === 'accepted' ? 'Instalando…' : 'Instalación cancelada.'; evento = null; });
+  });
+  if (/iphone|ipad|ipod/i.test(navigator.userAgent)) document.getElementById('ayuda-pc').style.display = 'none';
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(function () {});
+  fetch('config.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (c) {
+    var p = document.getElementById('prueba');
+    p.textContent = c.pruebaDias > 0 ? 'Prueba gratuita de ' + c.pruebaDias + ' días, con todas las funciones. Al terminar, tus datos siguen siendo tuyos: puedes verlos y exportarlos.' : 'Sin periodo de prueba.';
+    if (c.contacto) document.getElementById('contacto').textContent = 'Licencias y consultas: ' + c.contacto;
+  }).catch(function () {});
+</script>
+</body>
+</html>
