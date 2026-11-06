@@ -2,7 +2,7 @@
  * - Los archivos propios (HTML, JS, CSS, iconos) se sirven de la caché y se refrescan en segundo plano.
  * - Nunca se cachea nada de otros dominios (p. ej. las llamadas a Gemini van siempre directas a la red).
  * Sube VERSION cuando cambies este archivo. */
-const VERSION = 'v3';
+const VERSION = 'v4';
 const CACHE = `cuaderno-${VERSION}`;
 
 self.addEventListener('install', (e) => {
@@ -20,6 +20,7 @@ self.addEventListener('fetch', (e) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return; // otros dominios: directo a la red
+  if (req.cache === 'no-store') return; // comprobaciones de versión: siempre a la red
   // config.json (días de prueba, contacto): siempre de la red si hay conexión, para que tus cambios lleguen en seguida
   if (url.pathname.endsWith('/config.json')) {
     e.respondWith(
