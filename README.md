@@ -1,4 +1,4 @@
-# Web de RSG APPS
+# Web de MundyApps
 
 Web estática (HTML y CSS, sin dependencias) publicada en Vercel: https://web-rsg.vercel.app/
 
@@ -9,7 +9,7 @@ Cada vez que se sube un cambio a la rama `main` de este repositorio, Vercel la r
 | Archivo | Qué contiene |
 |---|---|
 | `index.html` | Portada: soluciones, banda de hostelería, cómo trabajamos y contacto (formulario) |
-| `hosteleria.html` | Página de RSG Hostelería |
+| `hosteleria.html` | Página de MundyApps Hostelería |
 | `aviso-legal.html`, `privacidad.html`, `cookies.html` | Textos legales |
 | `site.css` | Estilos de la portada y de la página de hostelería (colores, tipografía, espaciados) |
 | `legal.css` | Estilos de las páginas legales |
