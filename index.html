@@ -62,6 +62,21 @@
     </div>
   </section>
 
+  <section class="promo" id="cuaderno-video" aria-labelledby="titulo-promo">
+    <div class="promo-texto">
+      <p class="eyebrow">Demo destacada</p>
+      <h2 id="titulo-promo">Cuaderno del Profesor en 30 segundos</h2>
+      <p>Programa prácticas con fichas técnicas, evalúa con rúbricas y lleva la matriz de notas en un solo sitio. Se instala como app, funciona sin conexión y los datos se quedan en el dispositivo del profesor.</p>
+      <div class="cta">
+        <a class="btn" href="cuaderno/descargar.html">Probar la demo</a>
+        <a class="btn ghost" href="cuaderno/ayuda.html">Guía y vídeos</a>
+      </div>
+    </div>
+    <div class="promo-video">
+      <video src="media/cuaderno-promo.mp4" poster="media/cuaderno-promo.jpg" muted loop playsinline preload="metadata" controls aria-label="Vídeo de demostración del Cuaderno del Profesor (sin sonido)"></video>
+    </div>
+  </section>
+
 </main>
 
 <div class="band" id="restauracion">
@@ -164,6 +179,14 @@ form.addEventListener("submit",function(ev){
   }
   window.addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
   update();
+})();
+</script>
+<script>
+/* El vídeo de la demo se reproduce solo (sin sonido) cuando se ve en pantalla y se pausa al salir; no se reproduce solo si el usuario pide menos movimiento. */
+(function () {
+  var v = document.querySelector('#cuaderno-video video');
+  if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (e) { e.forEach(function (x) { if (x.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }); }, { threshold: 0.4 }).observe(v);
 })();
 </script>
 </body>

@@ -107,3 +107,11 @@ footer a{color:var(--muted)}
 .cta-band{border-top:1px solid var(--line);display:grid;gap:16px;justify-items:start}
 .cta-band h2{font-size:clamp(26px,3.4vw,34px)}
 .cta-band p{color:var(--muted);max-width:56ch}
+
+/* Demo destacada con vídeo (Cuaderno del Profesor) */
+.promo{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:center;padding:56px 0}
+.promo h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:12px}
+.promo-texto p{color:var(--muted)}
+.promo .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.promo-video video{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(15,22,32,.18);background:#000;aspect-ratio:16/9}
+@media (max-width:820px){.promo{grid-template-columns:1fr;gap:20px;padding:36px 0}}
