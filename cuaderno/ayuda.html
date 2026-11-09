@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Guía del Cuaderno del Profesor</title>
+<meta name="description" content="Cómo instalar y usar el Cuaderno del Profesor: curso, módulos, calendario, generador de clases, rúbricas, evaluación, recetas, exámenes y copias de seguridad." />
+<meta name="theme-color" content="#b4531f" />
+<link rel="icon" type="image/png" href="icons/icon-192.png" />
+<style>
+  :root { --fondo:#faf7f2; --sup:#fff; --texto:#2b2622; --suave:#6d645c; --borde:#e2dbd1; --acento:#b4531f; --acento-fondo:#fbeee5; --crema:#fff1d6; --ok:#2f7a3d; --aviso:#9a6200; --aviso-fondo:#fff4d6; }
+  @media (prefers-color-scheme: dark) { :root { --fondo:#1d1a17; --sup:#28241f; --texto:#f1ebe3; --suave:#b3a99d; --borde:#413a32; --acento:#f0925c; --acento-fondo:#3a2a20; --crema:#3a2c18; --ok:#7cc98a; --aviso:#f0b84a; --aviso-fondo:#33291a; } }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+  body { margin: 0; background: var(--fondo); color: var(--texto); font: 17px/1.6 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+  a { color: var(--acento); }
+  .marco { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; padding: 24px 16px 80px; }
+  nav.indice { position: sticky; top: 16px; align-self: start; max-height: calc(100vh - 32px); overflow: auto; font-size: .95rem; }
+  nav.indice strong { display: block; margin: 0 0 8px; color: var(--acento); }
+  nav.indice ol { margin: 0; padding-left: 28px; }
+  nav.indice li { margin: 4px 0; }
+  nav.indice .ir-videos { margin: 0 0 8px; font-weight: 600; }
+  nav.indice a { color: var(--texto); text-decoration: none; }
+  nav.indice a:hover { color: var(--acento); text-decoration: underline; }
+  header.portada { background: linear-gradient(135deg, var(--acento-fondo), var(--sup) 70%); border: 1px solid var(--borde); border-radius: 20px; padding: 28px; margin-bottom: 28px; }
+  header.portada .marca { display: flex; align-items: center; gap: 14px; }
+  header.portada img { width: 64px; height: 64px; border-radius: 16px; }
+  h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.15; margin: 0; }
+  .lema { color: var(--suave); margin: 10px 0 0; max-width: 62ch; }
+  .botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .boton { display: inline-flex; align-items: center; gap: 6px; min-height: 46px; padding: 10px 18px; border-radius: 12px; border: 1px solid var(--borde); background: var(--sup); color: var(--texto); text-decoration: none; font-weight: 600; }
+  .boton.primario { background: var(--acento); border-color: var(--acento); color: #fff; }
+  section { background: var(--sup); border: 1px solid var(--borde); border-radius: 18px; padding: 24px 26px; margin: 0 0 24px; }
+  section > h2 { margin: 0 0 6px; font-size: 1.55rem; display: flex; align-items: center; gap: 12px; }
+  section > h2 .num { flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--acento); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  h3 { margin: 26px 0 6px; font-size: 1.18rem; }
+  .intro { color: var(--suave); margin-top: 0; }
+  figure { margin: 14px 0 22px; }
+  figure img { display: block; width: 100%; height: auto; border: 1px solid var(--borde); border-radius: 12px; box-shadow: 0 6px 22px rgba(43, 38, 34, .12); background: #fff; }
+  figure img.pequena { width: auto; max-width: 100%; }
+  figcaption { color: var(--suave); font-size: .92rem; margin-top: 8px; }
+  .video { margin: 14px 0 22px; background: var(--crema); border: 1px solid var(--borde); border-radius: 14px; padding: 12px; }
+  .video video { display: block; width: 100%; height: auto; border-radius: 10px; background: #000; }
+  .video p { margin: 8px 4px 0; font-weight: 600; }
+  .pasos { counter-reset: paso; list-style: none; padding: 0; margin: 10px 0 16px; }
+  .pasos > li { counter-increment: paso; position: relative; padding: 4px 0 8px 44px; }
+  .pasos > li::before { content: counter(paso); position: absolute; left: 0; top: 2px; width: 30px; height: 30px; border-radius: 50%; background: var(--acento-fondo); color: var(--acento); font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .rejilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 12px 0; }
+  .caja { border: 1px solid var(--borde); border-radius: 14px; padding: 14px 16px; background: var(--fondo); }
+  .caja h4 { margin: 0 0 6px; font-size: 1.05rem; }
+  .caja ol, .caja ul { margin: 0; padding-left: 20px; }
+  .nota { border-left: 4px solid var(--acento); background: var(--acento-fondo); padding: 10px 14px; border-radius: 0 10px 10px 0; margin: 14px 0; }
+  .aviso { border-left: 4px solid var(--aviso); background: var(--aviso-fondo); padding: 10px 14px; border-radius: 0 10px 10px 0; margin: 14px 0; }
+  .colores { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 14px; padding: 0; list-style: none; }
+  .colores li { padding: 3px 12px; border-radius: 999px; border: 2px solid; font-weight: 600; font-size: .92rem; }
+  kbd { font: 600 .9em system-ui, sans-serif; border: 1px solid var(--borde); border-bottom-width: 2px; border-radius: 6px; padding: 1px 6px; background: var(--sup); }
+  .lista-videos { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+  .lista-videos a { display: block; padding: 10px 14px; border-radius: 12px; background: var(--crema); border: 1px solid var(--borde); color: var(--texto); text-decoration: none; font-weight: 600; }
+  .lista-videos a::before { content: '▶ '; color: var(--acento); }
+  details { border: 1px solid var(--borde); border-radius: 12px; padding: 10px 14px; margin: 8px 0; background: var(--fondo); }
+  details summary { cursor: pointer; font-weight: 600; }
+  footer { color: var(--suave); font-size: .9rem; text-align: center; margin-top: 30px; }
+  @media (max-width: 900px) {
+    .marco { grid-template-columns: 1fr; gap: 16px; }
+    nav.indice { position: static; max-height: none; background: var(--sup); border: 1px solid var(--borde); border-radius: 16px; padding: 14px 16px; }
+    section { padding: 18px 16px; }
+  }
+  @media print {
+    body { background: #fff; color: #000; font-size: 11pt; }
+    .marco { display: block; padding: 0; }
+    nav.indice, .botones, .video, .solo-pantalla { display: none !important; }
+    header.portada, section { border: none; box-shadow: none; padding: 0; margin: 0 0 14pt; background: none; }
+    section { break-before: page; }
+    section#instalar { break-before: auto; }
+    figure { break-inside: avoid; }
+    figure img { box-shadow: none; max-height: 125mm; width: auto; max-width: 100%; }
+    .solo-papel { display: block !important; }
+    a { color: #000; }
+  }
+  .solo-papel { display: none; }
+</style>
+</head>
+<body>
+<div class="marco">
+  <nav class="indice" aria-label="Índice">
+    <strong>Índice</strong>
+    <p class="ir-videos"><a href="#videos">▶ Vídeos cortos (8)</a></p>
+    <ol>
+      <li><a href="#instalar">Instalar la app</a></li>
+      <li><a href="#primeros-pasos">Primeros pasos</a></li>
+      <li><a href="#dia-a-dia">El día a día</a></li>
+      <li><a href="#practica">Programar una práctica</a></li>
+      <li><a href="#evaluar">Rúbricas y evaluación</a></li>
+      <li><a href="#recetas">Recetas y galería</a></li>
+      <li><a href="#examenes">Exámenes</a></li>
+      <li><a href="#ia">Cuando la IA tarda o falla</a></li>
+      <li><a href="#copias">Tus datos y las copias</a></li>
+      <li><a href="#preguntas">Preguntas frecuentes</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="portada">
+      <div class="marca">
+        <img src="icons/icon-192.png" alt="" width="64" height="64" />
+        <div>
+          <h1>Guía del Cuaderno del Profesor</h1>
+        </div>
+      </div>
+      <p class="lema">Cómo instalarlo y usarlo paso a paso: tu curso, tus módulos, el calendario, el generador de clases, las rúbricas, la evaluación, las recetas y las copias de seguridad. Con capturas reales y vídeos cortos.</p>
+      <div class="botones">
+        <a class="boton primario" href="descargar.html">⬇️ Instalar la app</a>
+        <a class="boton" href="./">Abrir la app</a>
+        <a class="boton" href="ayuda/guia-cuaderno-profesor.pdf" download>📄 Guía en PDF</a>
+      </div>
+      <p class="solo-papel">Versión en línea con vídeos: web-rsg.vercel.app/cuaderno/ayuda.html</p>
+    </header>
+
+    <section id="videos" class="solo-pantalla">
+      <h2><span class="num">▶</span> Vídeos cortos</h2>
+      <p class="intro">Cada vídeo dura menos de un minuto y no tiene sonido: los rótulos explican cada paso.</p>
+      <ul class="lista-videos">
+        <li><a href="#primeros-pasos">1 · Primeros pasos</a></li>
+        <li><a href="#configurar">2 · Configurar el curso y la IA</a></li>
+        <li><a href="#dia-a-dia">3 · Alumnos y asistencia</a></li>
+        <li><a href="#practica">4 · Programar una práctica</a></li>
+        <li><a href="#evaluar">5 · Evaluar con la rúbrica</a></li>
+        <li><a href="#recetas">6 · Recetas y escandallo</a></li>
+        <li><a href="#examenes">7 · Exámenes</a></li>
+        <li><a href="#copias">8 · Copias de seguridad</a></li>
+      </ul>
+    </section>
+
+    <!-- 1 -->
+    <section id="instalar">
+      <h2><span class="num">1</span> Instalar la app</h2>
+      <p class="intro">La app se instala desde el navegador, sin tienda de aplicaciones. Una vez instalada funciona sin conexión (la IA necesita internet) y se actualiza sola.</p>
+      <div class="rejilla">
+        <div class="caja">
+          <h4>💻 Ordenador (Chrome o Edge)</h4>
+          <ol>
+            <li>Abre <a href="descargar.html">la página de instalación</a>.</li>
+            <li>Pulsa <strong>«Instalar la aplicación»</strong>, o el icono de instalar que sale a la derecha de la barra de direcciones.</li>
+            <li>Se abre en su propia ventana y queda en el escritorio y en el menú Inicio.</li>
+          </ol>
+        </div>
+        <div class="caja">
+          <h4>📱 Android (Chrome)</h4>
+          <ol>
+            <li>Abre <a href="descargar.html">la página de instalación</a>.</li>
+            <li>Pulsa «Instalar la aplicación» o, en el menú <kbd>⋮</kbd>, <strong>«Instalar aplicación»</strong>.</li>
+            <li>El icono aparece en la pantalla de inicio.</li>
+          </ol>
+        </div>
+        <div class="caja">
+          <h4>🍎 iPhone o iPad (Safari)</h4>
+          <ol>
+            <li>Abre la página en <strong>Safari</strong>.</li>
+            <li>Pulsa <strong>Compartir</strong> (el cuadrado con la flecha hacia arriba).</li>
+            <li>Elige <strong>«Añadir a pantalla de inicio»</strong>.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="aviso"><strong>Importante en iPhone y iPad:</strong> instálala en la pantalla de inicio. Si la usas solo en Safari como una web normal, Safari puede borrar sus datos cuando pasan 7 días sin abrirla.</div>
+      <h3>Actualizaciones</h3>
+      <p>Cuando hay una versión nueva, arriba sale el aviso <strong>«Hay una versión nueva de la aplicación»</strong>. Pulsa <strong>«Actualizar ahora»</strong>: tus datos no se tocan. En Ajustes, abajo del todo, ves qué versión tienes.</p>
+      <div class="nota">Cada navegador (y cada dirección web) guarda sus propios datos. Si usas la app en Chrome, ábrela siempre en Chrome; para pasar tus datos a otro navegador u ordenador, usa la <a href="#copias">copia de seguridad</a>.</div>
+    </section>
+
+    <!-- 2 -->
+    <section id="primeros-pasos">
+      <h2><span class="num">2</span> Primeros pasos</h2>
+      <p class="intro">La primera vez, la app te recibe con tres pasos: tu curso, tu primer módulo y ¡a trabajar!</p>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/1-primeros-pasos.jpg" src="ayuda/video/1-primeros-pasos.mp4" playsinline></video>
+        <p>🎬 Vídeo: primeros pasos (25 s)</p>
+      </div>
+      <h3>Paso 1 · Crea tu curso</h3>
+      <p>Escribe tu nombre y el de tu centro (son obligatorios: salen en la cabecera de fichas, exámenes y rúbricas). El correo, la localidad, las fechas del curso y el logo del centro son opcionales. El año del curso sale solo según la fecha.</p>
+      <figure><img src="ayuda/img/01-bienvenida.jpg" alt="Pantalla de bienvenida con el formulario «Crea tu curso 2026/27»" loading="lazy" /><figcaption>La bienvenida con el formulario del curso.</figcaption></figure>
+      <h3>Paso 2 · Tu primer módulo</h3>
+      <p>Puedes crear tu módulo o cargar un <strong>módulo de prueba</strong> con alumnos, clases y notas inventados para trastear (luego lo borras).</p>
+      <figure><img src="ayuda/img/02-primer-modulo.jpg" alt="Paso 2 de la bienvenida: crear el primer módulo" loading="lazy" /></figure>
+      <p>En <strong>Crear módulo</strong> tienes todas las formas de empezar:</p>
+      <ul>
+        <li><strong>Desde cero:</strong> un módulo vacío con trimestres y reglas de evaluación por defecto.</li>
+        <li><strong>Importar currículo o programación:</strong> subes el Word o PDF y la IA propone RA, criterios, UT y pesos. Tú lo revisas antes de guardar.</li>
+        <li><strong>Ejemplo</strong> y <strong>módulo de prueba</strong>, para ver cómo funciona.</li>
+        <li><strong>Restaurar una copia</strong> si ya usabas la app en otro sitio.</li>
+      </ul>
+      <figure><img src="ayuda/img/03-crear-modulo.jpg" alt="Pantalla Crear módulo con las distintas opciones" loading="lazy" /></figure>
+      <h3 id="configurar">Configurar el curso y la IA</h3>
+      <p>Con el botón <strong>«🎓 Curso…»</strong> de arriba del menú completas tu curso cuando quieras: código de documento, logo del centro y el <strong>calendario escolar</strong> (inicio y fin, evaluaciones y días no lectivos; también se puede importar el calendario del centro con IA).</p>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/5-configuracion-ia.jpg" src="ayuda/video/5-configuracion-ia.mp4" playsinline></video>
+        <p>🎬 Vídeo: configurar el curso y la IA (36 s)</p>
+      </div>
+      <h3>Paso 3 · La inteligencia artificial (opcional)</h3>
+      <p>La IA prepara clases, recetas, niveles de rúbricas y exámenes, e importa currículos. En <strong>Ajustes → Inteligencia artificial</strong>:</p>
+      <ol class="pasos">
+        <li>Elige el proveedor. <strong>Gemini (Google)</strong> tiene modalidad gratuita para empezar; el enlace «Conseguir la clave» te lleva a crearla.</li>
+        <li>Pega la clave y pulsa <strong>«Probar conexión»</strong>.</li>
+        <li>Elige la <strong>velocidad</strong>: «Rápida» (15–45 s), «Equilibrada» (recomendada) o «Máxima calidad» (varios minutos).</li>
+        <li>Pulsa <strong>«Guardar»</strong>: el botón se pone verde.</li>
+      </ol>
+      <figure><img src="ayuda/img/04-ajustes-ia.jpg" alt="Ajustes de inteligencia artificial: proveedor, clave, modelo y velocidad" loading="lazy" /></figure>
+      <div class="nota">Si en tu centro usáis Copilot u otra IA sin clave, elige <strong>«Copiar y pegar»</strong>: la app te da el texto para pegarlo en esa IA y tú pegas la respuesta. La clave se guarda solo en tu dispositivo y nunca va en las copias de seguridad.</div>
+    </section>
+
+    <!-- 3 -->
+    <section id="dia-a-dia">
+      <h2><span class="num">3</span> El día a día</h2>
+      <h3>Inicio</h3>
+      <p>Tu panorama: el calendario del mes con las clases (T teórica, P práctica, E examen) y el estado de cada resultado de aprendizaje: horas dadas, horas que faltan y si está completado.</p>
+      <figure><img src="ayuda/img/06-inicio.jpg" alt="Pantalla de inicio con calendario y estado de los RA" loading="lazy" /></figure>
+      <h3>Calendario</h3>
+      <p>Pincha un día para ver sus clases y, desde ahí, <strong>pasar lista</strong>, abrir la <strong>rúbrica</strong> o el <strong>plan</strong>. Con «+ Clase teórica» y «+ Clase práctica» añades una clase rápida. Los días sombreados son no lectivos (se configuran en tu curso).</p>
+      <figure><img src="ayuda/img/07-calendario.jpg" alt="Calendario del mes con las clases y el detalle del día" loading="lazy" /></figure>
+      <h3>Alumnos y asistencia</h3>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/7-alumnos-asistencia.jpg" src="ayuda/video/7-alumnos-asistencia.mp4" playsinline></video>
+        <p>🎬 Vídeo: alumnos y asistencia (27 s)</p>
+      </div>
+      <p>En <strong>Alumnos</strong> das de alta al grupo (uno a uno o pegando la lista: una línea por alumno con «apellidos, nombre, alergias»). Las alergias se avisan en las fichas de las prácticas. En <strong>Asistencia</strong> marcas cada día: P presente, F falta, J justificada, R retraso.</p>
+      <div class="rejilla">
+        <figure><img src="ayuda/img/08-alumnos.jpg" alt="Lista de alumnos con avisos de alergias" loading="lazy" /></figure>
+        <figure><img src="ayuda/img/09-pasar-lista.jpg" alt="Pasar lista con los botones P F J R" loading="lazy" /></figure>
+      </div>
+      <div class="nota">Las faltas se cuentan por RA y por módulo. En el módulo configuras el porcentaje mínimo de asistencia; si un alumno lo supera, la app lo avisa y tú decides si permitir la evaluación.</div>
+    </section>
+
+    <!-- 4 -->
+    <section id="practica">
+      <h2><span class="num">4</span> Programar una práctica</h2>
+      <p class="intro">En <strong>Generador de clase → Práctica</strong> preparas la clase completa: datos curriculares, recetas, desarrollo y rúbrica. Se hace en tres pasos: <strong>generar ficha → vista previa → guardar</strong>.</p>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/2-programar-practica.jpg" src="ayuda/video/2-programar-practica.mp4" playsinline></video>
+        <p>🎬 Vídeo: programar una práctica (34 s)</p>
+      </div>
+      <h3>Datos curriculares y calendario</h3>
+      <p>Elige la <strong>unidad de trabajo</strong>: los RA y criterios se marcan solos (puedes quitar o añadir). Pon la fecha y las horas: la app te dice cuántas horas le quedan al RA con esta clase.</p>
+      <figure><img src="ayuda/img/11-generador-datos.jpg" alt="Generador de clase: unidad de trabajo, RA y horas" loading="lazy" /></figure>
+      <h3>Recetas</h3>
+      <p>Añádelas <strong>del banco</strong> (tus recetas guardadas), desde un archivo o una foto, o créalas con IA. Las recetas nuevas se guardan solas en Registro → Recetas.</p>
+      <figure><img src="ayuda/img/10-generador-banco.jpg" alt="Adjuntar recetas del banco a la clase práctica" loading="lazy" /></figure>
+      <h3>1 · Generar ficha</h3>
+      <p>Monta la ficha de programación y la enseña debajo, con avisos de lo que falte (sin recetas, alérgenos sin revisar, día no lectivo…). Si cambias algo después, la ficha queda «desactualizada» y hay que generarla otra vez.</p>
+      <figure><img src="ayuda/img/12-ficha-generada.jpg" alt="Ficha generada debajo del formulario" loading="lazy" /></figure>
+      <h3>2 · Vista previa: imprimir, PDF o Word</h3>
+      <p>La hoja A4 tal como saldrá. <strong>«Imprimir / Guardar PDF»</strong> (elige «Guardar como PDF» como impresora) o <strong>«⬇️ Word»</strong> para editarla en Word (lo que cambies en Word no vuelve a la app).</p>
+      <figure><img src="ayuda/img/13-vista-previa.jpg" alt="Vista previa de la ficha con los botones de imprimir y Word" loading="lazy" /></figure>
+      <h3>3 · Guardar</h3>
+      <p>Guarda la clase en el calendario (con su rúbrica, si la elegiste). El botón se pone <strong style="color:var(--ok)">verde: «✅ Guardado»</strong>. Si vuelves a cambiar algo, «Guardar cambios» actualiza la misma clase. Con <strong>«➕ Nueva clase»</strong> empiezas otra.</p>
+      <figure><img src="ayuda/img/14-guardada.jpg" alt="Botón de guardar en verde tras guardar" loading="lazy" /></figure>
+      <div class="nota">En toda la app, los botones de guardar se ponen <strong>verdes</strong> cuando lo que ves ya está guardado.</div>
+      <p>Las <strong>clases teóricas</strong> se programan igual (pestaña «Teórica»), pueden llevar tus apuntes, cuentan horas para el RA y no llevan rúbrica.</p>
+    </section>
+
+    <!-- 5 -->
+    <section id="evaluar">
+      <h2><span class="num">5</span> Rúbricas y evaluación</h2>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/3-evaluar-rubrica.jpg" src="ayuda/video/3-evaluar-rubrica.mp4" playsinline></video>
+        <p>🎬 Vídeo: evaluar con la rúbrica y ver la matriz (36 s)</p>
+      </div>
+      <h3>Tus clases de un vistazo</h3>
+      <p>En <strong>Registro → Clases</strong> (y en el Historial del generador) cada clase es una tarjeta. Pinchándola abres su plan; el color dice cómo va:</p>
+      <ul class="colores">
+        <li style="border-color:#8a8178;color:#8a8178">Próxima</li>
+        <li style="border-color:#2f65a8;color:#2f65a8">Sin evaluar</li>
+        <li style="border-color:#d4570c;color:#d4570c">Evaluada a medias</li>
+        <li style="border-color:#2f7a3d;color:#2f7a3d">Evaluada</li>
+        <li style="border-color:#7b6a5a;color:#7b6a5a">Teórica impartida</li>
+      </ul>
+      <figure><img src="ayuda/img/16-registro-clases.jpg" alt="Tarjetas de clases con colores según su evaluación" loading="lazy" /></figure>
+      <h3>Preparar la rúbrica</h3>
+      <p>Las filas salen de los criterios de los RA de la clase, con pesos iguales. Escribe los cuatro niveles o pulsa <strong>«Proponer niveles con IA»</strong>. También puedes copiar la rúbrica de otra clase, añadir filas libres y verla, imprimirla o descargarla en Word.</p>
+      <figure><img src="ayuda/img/15-rubrica-editar.jpg" alt="Editar rúbrica: criterios, pesos y niveles" loading="lazy" /></figure>
+      <h3>Evaluar alumnos</h3>
+      <p>Elige el alumno, marca su asistencia de ese día y toca un nivel en cada criterio (o un atajo: Sobresaliente, Notable…). Con <strong>«Siguiente ▶»</strong> pasas al siguiente. La nota de la clase se calcula sola.</p>
+      <figure><img src="ayuda/img/17-rubrica-evaluar.jpg" alt="Evaluar a un alumno con la rúbrica" loading="lazy" /></figure>
+      <h3>La matriz de evaluación</h3>
+      <p>En <strong>Evaluación</strong> ves todas las notas por RA y UT: teoría, práctica, taller y nota del RA. Toca una nota para ver <strong>de dónde sale</strong> (rúbricas, exámenes…) y editarla si hace falta. Las notas finales se redondean al entero (6,5 → 7) y el módulo aprueba según tus reglas.</p>
+      <figure><img src="ayuda/img/18-matriz.jpg" alt="Matriz de evaluación con notas por RA y UT" loading="lazy" /></figure>
+    </section>
+
+    <!-- 6 -->
+    <section id="recetas">
+      <h2><span class="num">6</span> Recetas y galería</h2>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/6-recetas-escandallo.jpg" src="ayuda/video/6-recetas-escandallo.mp4" playsinline></video>
+        <p>🎬 Vídeo: recetas y escandallo (30 s)</p>
+      </div>
+      <p>En <strong>Registro → Recetas</strong> tienes tu banco de fichas técnicas. Puedes crearlas <strong>a mano</strong>, <strong>desde una foto</strong> (de la pizarra o un libro), <strong>con IA</strong> o <strong>desde un archivo</strong>, y filtrarlas por categoría.</p>
+      <figure><img src="ayuda/img/19-recetas.jpg" alt="Banco de recetas en tarjetas" loading="lazy" /></figure>
+      <p>Cada ficha lleva ingredientes con cantidad y unidad, <strong>% del panadero</strong> sobre el ingrediente base, precio y <strong>escandallo</strong> (coste total, por ración y PVP), alérgenos UE, tiempos y temperaturas, pasos y foto. Al cambiar las raciones se recalculan cantidades y costes.</p>
+      <figure><img src="ayuda/img/20-receta-editor.jpg" alt="Editor de la ficha técnica con ingredientes" loading="lazy" /></figure>
+      <p><strong>Galería del obrador</strong> (Registro → 🖼 Galería): sube tus fotos (o hazlas con el móvil) y ponlas en cualquier receta con «🖼 De la galería».</p>
+    </section>
+
+    <!-- 7 -->
+    <section id="examenes">
+      <h2><span class="num">7</span> Exámenes</h2>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/8-examenes.jpg" src="ayuda/video/8-examenes.mp4" playsinline></video>
+        <p>🎬 Vídeo: exámenes (31 s)</p>
+      </div>
+      <p>En <strong>Generador de clase → Examen</strong> creas exámenes teóricos (test, preguntas cortas y de desarrollo) o prácticos (con criterios), a mano o con IA, con un <strong>banco de preguntas</strong> reutilizable. Cada examen tiene <strong>hoja del alumno</strong> y <strong>hoja del profesor</strong> con las soluciones, en PDF o Word.</p>
+      <figure><img src="ayuda/img/22-examen.jpg" alt="Editor de examen teórico" loading="lazy" /></figure>
+      <p>Para poner las notas usa <strong>Corregir exámenes</strong>: la nota va a la UT del examen y aparece en la matriz.</p>
+    </section>
+
+    <!-- 8 -->
+    <section id="ia">
+      <h2><span class="num">8</span> Cuando la IA tarda o falla</h2>
+      <p>Mientras la IA trabaja verás un cuadro abajo a la derecha con el tiempo. Puedes seguir usando la app (incluso ir a otra pantalla) y, si se atasca, pulsar <strong>«⏹ Detener»</strong>.</p>
+      <figure><img class="pequena" src="ayuda/img/23-ia-trabajando.jpg" alt="Cuadro «IA trabajando» con el botón Detener" loading="lazy" /></figure>
+      <p>Si falla (sin conexión, servicio saturado, límite de uso…), sale un aviso con lo que ha pasado y el botón <strong>«🔄 Inténtalo de nuevo»</strong>: repite la petición sin perder lo que habías escrito. Si el problema es la clave o el modelo, te ofrece ir a Ajustes.</p>
+      <figure><img src="ayuda/img/24-ia-error.jpg" alt="Aviso de error de la IA con el botón Inténtalo de nuevo" loading="lazy" /></figure>
+      <div class="nota">Si tarda mucho, elige la velocidad «Rápida» en Ajustes. La IA nunca recibe los nombres de tus alumnos.</div>
+    </section>
+
+    <!-- 9 -->
+    <section id="copias">
+      <h2><span class="num">9</span> Tus datos y las copias de seguridad</h2>
+      <p class="intro">Tus datos están <strong>solo en tu dispositivo</strong>, no en ningún servidor. Por eso es importante hacer copias.</p>
+      <div class="video">
+        <video controls preload="none" poster="ayuda/video/4-copia-seguridad.jpg" src="ayuda/video/4-copia-seguridad.mp4" playsinline></video>
+        <p>🎬 Vídeo: copias de seguridad (17 s)</p>
+      </div>
+      <h3>Copia a mano</h3>
+      <p><strong>Ajustes → Copia de seguridad → «Exportar copia»</strong> descarga un archivo con todo. Mejor <strong>cifrada con contraseña</strong>, porque lleva datos de alumnos (apunta la contraseña: sin ella no se recupera).</p>
+      <h3>Copia automática (Chrome y Edge de ordenador)</h3>
+      <ol class="pasos">
+        <li>En <strong>Ajustes → 🗂 Copia automática</strong>, pulsa «Elegir carpeta para las copias». Si eliges una carpeta de <strong>OneDrive o Google Drive</strong>, las copias suben solas a tu nube.</li>
+        <li>Elige cada cuántos días (1, 3, 7, 14 o 30) y cuántas copias se guardan.</li>
+        <li>Opcional: cífrala con contraseña.</li>
+      </ol>
+      <figure><img src="ayuda/img/05-copia-automatica.jpg" alt="Panel de copia automática en Ajustes" loading="lazy" /></figure>
+      <p>Si después de reiniciar el navegador pide volver a dar permiso a la carpeta, arriba sale un aviso: «Permitir y hacer la copia». En el móvil, Safari y Firefox no se puede escribir en carpetas: la app te <strong>recuerda</strong> hacer la copia cuando toca.</p>
+      <h3>Cambiar de ordenador o de navegador</h3>
+      <ol class="pasos">
+        <li>En el antiguo: exporta la copia (o usa la de tu carpeta automática).</li>
+        <li>En el nuevo: instala la app y, en la bienvenida o en Ajustes, pulsa <strong>«Importar copia…»</strong>.</li>
+      </ol>
+      <div class="aviso">Borrar los «datos de sitios» o «cookies» del navegador borra también los datos de la app. Haz una copia antes.</div>
+    </section>
+
+    <!-- 10 -->
+    <section id="preguntas">
+      <h2><span class="num">10</span> Preguntas frecuentes</h2>
+      <details><summary>¿Necesito internet?</summary><p>No, salvo para la IA y para instalar o actualizar la app. Todo lo demás funciona sin conexión.</p></details>
+      <details><summary>¿Dónde están mis datos? ¿Los ve alguien?</summary><p>Solo en tu dispositivo, dentro del navegador. La app no los envía a ningún servidor. A la IA solo le llega el texto que le pides procesar, sin nombres de alumnos.</p></details>
+      <details><summary>He abierto la app y está vacía</summary><p>Seguramente la has abierto en otro navegador, otro perfil u otra dirección (cada uno guarda sus propios datos). Ábrela donde la usabas o importa tu copia de seguridad.</p></details>
+      <details><summary>¿Puedo usarla en el ordenador y en el móvil a la vez?</summary><p>Sí, pero cada dispositivo tiene sus datos. Para pasarlos de uno a otro, exporta la copia en uno e impórtala en el otro.</p></details>
+      <details><summary>La IA tarda mucho</summary><p>En Ajustes elige la velocidad «Rápida». Si se atasca, pulsa «⏹ Detener» y «Inténtalo de nuevo».</p></details>
+      <details><summary>¿Cómo cambio los datos del curso o empiezo otro curso?</summary><p>Con el botón «🎓 Curso…» de arriba del menú: ahí cambias profesor, centro, logo y calendario escolar, y creas un curso nuevo (puede copiar los datos del anterior).</p></details>
+      <details><summary>¿Cómo edito una clase ya guardada en Word?</summary><p>Abre su vista previa («👁 Ficha» en la tarjeta) y pulsa «⬇️ Word». Lo que cambies en Word no vuelve a la app.</p></details>
+    </section>
+
+    <footer>
+      Cuaderno del Profesor · <a href="legal.html">Aviso legal y privacidad</a> · MundyApps
+    </footer>
+  </main>
+</div>
+</body>
+</html>

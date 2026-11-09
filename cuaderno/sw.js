@@ -2,11 +2,11 @@
  * - Los archivos propios (HTML, JS, CSS, iconos) se sirven de la caché y se refrescan en segundo plano.
  * - Nunca se cachea nada de otros dominios (p. ej. las llamadas a Gemini van siempre directas a la red).
  * Sube VERSION cuando cambies este archivo. */
-const VERSION = 'v4';
+const VERSION = 'v5';
 const CACHE = `cuaderno-${VERSION}`;
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(['./', 'manifest.webmanifest', 'icons/icon-192.png', 'descargar.html', 'legal.html'])).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(['./', 'manifest.webmanifest', 'icons/icon-192.png', 'descargar.html', 'legal.html', 'ayuda.html'])).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
