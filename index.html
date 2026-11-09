@@ -17,6 +17,7 @@
     <a class="logo" href="#inicio" aria-label="MundyApps, inicio"><img src="icon.png" alt="" width="99" height="52"><span>Mundy<i>Apps</i></span></a>
     <nav aria-label="Principal">
       <a href="#soluciones">Soluciones</a>
+      <a href="demos.html">Demos</a>
       <a href="hosteleria.html">Hostelería</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#contacto">Contacto</a>
@@ -34,7 +35,7 @@
       <div class="cta">
         <a class="btn" href="#contacto">Cuéntanos qué quieres mejorar</a>
         <a class="btn ghost" href="#soluciones">Ver soluciones</a>
-        <a class="btn ghost" href="cuaderno/descargar.html">Descargar Cuaderno del Profesor (prueba)</a>
+        <a class="btn ghost" href="demos.html">Ver demos</a>
       </div>
     </div>
     <aside class="panel" aria-label="Ejemplos de tareas que se pueden automatizar">
@@ -57,7 +58,7 @@
       <article class="card"><span class="ic">01</span><h3>Desarrollo a medida</h3><p>Aplicaciones pensadas para tus procesos y tu presupuesto, sin funciones que no vas a usar.</p></article>
       <article class="card"><span class="ic">02</span><h3>Software de escritorio</h3><p>Programas que se instalan en tus ordenadores y guardan los datos en tu red local, para trabajar sin depender de internet.</p></article>
       <article class="card"><span class="ic">03</span><h3>Automatización de tareas</h3><p>Detectamos lo que haces a mano una y otra vez y lo simplificamos. Si no sabes por dónde empezar, te orientamos.</p></article>
-      <article class="card"><span class="ic">04</span><h3>Aplicaciones propias</h3><p>Herramientas listas para usar, en preparación. <span class="chip c-new">Próximamente</span></p></article>
+      <article class="card"><span class="ic">04</span><h3>Demos y aplicaciones listas</h3><p>Prueba lo que podemos hacer. Si te encaja, la adaptamos a tu negocio. <a href="demos.html">Ver demos</a></p></article>
     </div>
   </section>
 
@@ -128,6 +129,7 @@
 </footer>
 
 <script>
+(function(){try{var d=new URLSearchParams(location.search).get("demo");if(d){var m=document.getElementById("m");if(m&&!m.value)m.value="Me interesa la demo: "+d+". "}}catch(e){}})();
 var form=document.getElementById("f"),msg=document.getElementById("msg"),btn=document.getElementById("send");
 function show(text,isErr){msg.hidden=false;msg.className=isErr?"err":"";msg.textContent=text}
 form.addEventListener("submit",function(ev){
