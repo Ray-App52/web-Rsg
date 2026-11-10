@@ -14,6 +14,8 @@ Cada vez que se sube un cambio a la rama `main` de este repositorio, Vercel la r
 | `site.css` | Estilos de la portada y de la página de hostelería (colores, tipografía, espaciados) |
 | `legal.css` | Estilos de las páginas legales |
 | `icon.png`, `favicon.png` | Símbolo del logo y icono de la pestaña |
+| `fichajes/` | Demo del Registro de jornada (app de fichajes). Es la compilación de `apps/web` del repositorio de la app con `npm run build:demo --workspace apps/web` (carpeta `dist-demo`); no se edita a mano |
+| `vercel.json` | Hace que las direcciones internas de la demo (`/fichajes/admin`, `/fichajes/tablet`...) abran la demo en vez de dar error 404 |
 
 ## Cómo modificar la web
 
